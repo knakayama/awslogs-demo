@@ -1,0 +1,6 @@
+---
+awslogs_confs_copy:
+  - { src: etc/awslogs/awscli.conf, dest: /etc/awslogs/awscli.conf }
+
+awslogs_confs_template:
+  - { src: etc/awslogs/config/nginx_access_log.conf.j2, dest: /etc/awslogs/config/nginx_access_log.conf }

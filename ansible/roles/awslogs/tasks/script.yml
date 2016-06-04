@@ -1,0 +1,7 @@
+---
+- name: Setup cron
+  cron:
+    name: Access localhost periodically
+    minute: "*/1"
+    job: curl localhost >/dev/null 2>&1
+    state: present

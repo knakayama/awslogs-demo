@@ -1,0 +1,7 @@
+[/var/log/nginx/access_log]
+log_group_name = /var/log/nginx/access_log
+log_stream_name = {{ instance_id.stdout }}_nginx_access_log
+file = /var/log/nginx/access.log
+datetime_format = [%a %b %d %H:%M:%S %Y]
+initial_position = start_of_file
+buffer_duration = 5000

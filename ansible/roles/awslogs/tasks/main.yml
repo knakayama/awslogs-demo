@@ -1,0 +1,3 @@
+---
+- include: awslogs.yml
+- include: script.yml

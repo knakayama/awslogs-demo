@@ -1,0 +1,7 @@
+---
+- name: Setup awslogs agent
+  hosts: all
+  connection: local
+  roles:
+    - { role: nginx,   tags: [ nginx ] }
+    - { role: awslogs, tags: [ awslogs ] }

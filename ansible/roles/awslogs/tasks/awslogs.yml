@@ -1,0 +1,40 @@
+---
+- name: Install awslogs
+  yum:
+    name: awslogs
+    state: present
+
+- name: Get instance-id
+  shell: |
+    curl http://169.254.169.254/latest/meta-data/instance-id
+  register: instance_id
+
+- name: Copy awslogs conf
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Restart awslogs
+  with_items:
+    - "{{ awslogs_confs_copy }}"
+
+- name: Copy awslogs conf
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Restart awslogs
+  with_items:
+    - "{{ awslogs_confs_template }}"
+
+- name: Be sure awslogs enabled and started
+  service:
+    name: awslogs
+    enabled: yes
+    state: started
